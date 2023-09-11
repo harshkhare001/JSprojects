@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Timer</title>
+</head>
+<style type="text/css">
+	h1,h2{
+		font-size: 100px;
+		text-align: center;
+		color: orange;
+		transition: 2s;
+		cursor: pointer;
+	
+	}
+	div{
+		box-align: center;
+		box-pack: revert-layer;
+	}
+</style>
+<body onload=test()>
+	<h2>Clock</h1>
+	<div>
+		<h1 id="clock1" onmouseenter="modify()"  onmouseleave="unmodify()">Clock</h1>
+ 	</div>
+	
+	<script type="text/javascript">
+		function test(){
+			var d=new Date();
+			var h=d.getHours();
+			var m=d.getMinutes();
+			var s=d.getSeconds();
+			var session = "AM";
+			if (h>=12){
+				session="PM";
+			}
+			if(h>12){
+				h-=12;
+			}
+			
+			h=h<10? "0"+h : h;
+			m=m<10? "0"+m : m;
+			s=s<10? "0"+s : s;
+
+			var time= h+":"+m+":"+s+" "+session;
+			document.getElementsByTagName('h1')[0].innerText=time;
+			setTimeout(test,1000);
+		}
+		function modify(){
+			document.getElementById("clock1").style.fontSize="200px";
+			document.getElementById("clock1").style.color="blue";
+			// document.getElementById("clock1").style.font-family="cursive";
+		}
+		function unmodify(){
+			document.getElementById("clock1").style.fontSize="100px";
+			document.getElementById("clock1").style.color="orange";
+		}
+		
+	</script>
+
+</body>
+</html>
